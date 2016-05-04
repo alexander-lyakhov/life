@@ -1,0 +1,258 @@
+html, body {
+    height: 100%;
+}
+
+body    {
+    font: 13px verdana;
+    color: #000;
+    background: #000;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* IE/Edge */
+    user-select: none;
+}
+
+.to-home {
+    font: 18px terminal;
+    height: 32px;
+    line-height: 32px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0 8px;
+}
+
+.to-home a {
+    color: #999;
+}
+
+.to-home a:hover {
+    color: #ccc;
+}
+
+canvas {
+    background: url(../img/bg-01.png);
+    margin: -300px 0 0 -300px;
+}
+
+.page-list {
+    text-align: center;
+    width: 100%;
+    height: 320px;
+    position: absolute;
+    top: 50%;
+    margin: -160px 0 0 0;
+}
+
+.page-list__item {
+    background: #000;
+    box-sizing: border-box;
+    width: 256px;
+    height: 256px;
+    display: inline-block;
+    margin: 32px 32px;
+}
+
+.page-list__item a {
+    border: 2px solid #666;
+    width: 100%;
+    height: 100%;
+    float: left;
+}
+
+.page-list__item a:hover {
+    border: 2px solid #999;
+}
+
+.screen-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+
+/*
+ * Control Panel styles
+ */
+.control-panel {
+    background: #333;
+    border: 1px solid #666;
+    text-align: center;
+    width: 160px;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.control-panel__separator {
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #666;
+    height: 0;
+    margin: 0 8px;
+}
+
+.preset-list {
+    margin: 8px 8px;
+}
+
+.preset-list__item {
+    background: #444;
+    border: 1px solid #808080;
+    margin: 4px 0;
+    height: 32px;
+    line-height: 32px;
+    overflow: hidden;
+}
+
+.preset-list__item.selected {
+    background: #333;
+}
+
+.preset-list__item.selected a {
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.preset-list__item a {
+    color: #ccc;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    float: left;
+}
+
+.preset-list__item a:hover {
+    background: #333;
+}
+
+.checkbox-group {
+    margin: 16px 0;
+}
+
+.checkbox-wrapper {
+    color: #ccc;
+    text-align: left;
+    margin: 12px 8px;
+}
+
+[type=checkbox] {
+    display: none;
+}
+
+label {
+    cursor: pointer;
+}
+
+.control-panel__label:before {
+    content: '';
+    border: 1px solid #999;
+    box-sizing: border-box;
+    display: block;
+    width: 16px;
+    height: 16px;
+    line-height: 20px;
+    float: left;
+    margin: 0 8px 0 0;
+}
+
+[type=checkbox]:checked + label:before {
+    background: #999;
+}
+
+/*
+ *  Tooltip Button
+ */
+
+.button-tooltip {
+    font: 18px terminal;
+    color: #abc;
+    background: #456;
+    /*border: 2px solid #abc;*/
+    border: 0;
+    border-radius: 16px;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    position: absolute;
+    left: 50%;
+    bottom: 16px;
+    margin: 0 0 0 -16px;
+    padding: 0;
+    cursor: pointer;
+}
+
+.button-tooltip:hover {
+    color: #456;
+    background: #abc;
+}
+
+/*
+ *  Tooltip
+ */
+
+.tooltip-wrapper {
+    width: 480px;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    margin: 0 0 0 -240px;
+    perspective: 800px;
+}
+
+.tooltip {
+    font: 15px verdana;
+    color: #eee;
+    background: #246;
+    border: 3px solid #8ac;
+    border-radius: 8px;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 100%;
+    padding: 20px 10px 18px 10px;
+
+    transform-style: preserve-3d;
+    transform-origin: center bottom;
+
+    transition: transform 0.3s;
+    transform: rotateX(90deg);
+}
+
+.tooltip-row {
+    border-top: 1px dotted #89a;
+    line-height: 24px;
+    width:100%;
+    clear: both;
+    overflow: hidden;
+}
+
+.tooltip-row:first-child {
+    border: none;
+}
+
+.tooltip-row__caption {
+    padding: 0 4px 0 0;
+    float: left;
+}
+
+.tooltip-row__action {
+    padding: 0 0 0 4px;
+    float: right;
+}
+
+.tooltip.flipped {
+    transition: transform 0.3s;
+    transform: rotateX(0deg);
+}
