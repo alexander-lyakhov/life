@@ -87,12 +87,18 @@ canvas {
 .control-panel {
     background: #333;
     border: 1px solid #666;
-    text-align: center;
-    width: 160px;
+    /*text-align: center;*/
+    width: 200px;
     height: 100%;
     position: fixed;
     right: 0;
     top: 0;
+    padding: 8px 0 0 0;
+}
+
+.control-panel__shell {
+    /*background: #066;*/
+    margin: 0 6px 8px 6px;
 }
 
 .control-panel__separator {
@@ -255,4 +261,74 @@ label {
 .tooltip.flipped {
     transition: transform 0.3s;
     transform: rotateX(0deg);
+}
+
+/*
+ *  Trackbar
+ */
+
+.trackbar {
+    font: 18px terminal;
+    color: #0cc;
+    width: 188px;
+    /*height: 32px;*/
+    display: inline-block;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.trackbar__caption {
+    font: 13px verdana;
+    color: #ccc;
+    height: 28px;
+    line-height: 28px;
+    display: block;
+}
+
+.trackbar__shell {
+    width: 120px;
+    height: 32px;
+    height: 100%;
+    position: relative;
+    float: left;
+}
+
+.trackbar__shell.empty {
+    border: 1px solid #066;
+}
+
+.trackbar__segments-wrapper {
+    height: 100%;
+    float: left;
+}
+
+.trackbar__segment {
+    background: #066;
+    width: 4px;
+    height: 32px;
+    margin: 0 1px;
+    float: left;
+}
+
+.trackbar__segment.on {
+    background: #0cc;
+}
+
+.trackbar__segments-touch {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.trackbar__value {
+    border: 1px solid #066;
+    text-align: right;
+    width: 58px;
+    height: 32px;
+    line-height: 32px;
+    margin: 0 0 0 10px;
+    padding: 0 8px;
+    float: right;
 }

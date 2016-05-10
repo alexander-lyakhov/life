@@ -10,9 +10,73 @@
 <body>
     <canvas width="600" height="600" class="screen-center"></canvas>
 
+    <section class="control-panel life-control-panel">
+
+        <div class="control-panel__shell">
+            <div id="trackbar-speed" class="trackbar noselect">
+
+                <label class="trackbar__caption">Speed</label>
+
+                <div class="trackbar__shell empty">
+                    <div class="trackbar__segments-wrapper"></div>
+                    <div class="trackbar__segments-touch noselect"></div>
+                </div>
+                <div class="trackbar__value">0%</div>
+            </div>
+        </div>
+
+        <div class="control-panel__shell">
+            <div id="trackbar-density" class="trackbar noselect">
+
+                <label class="trackbar__caption">Density</label>
+
+                <div class="trackbar__shell empty">
+                    <div class="trackbar__segments-wrapper"></div>
+                    <div class="trackbar__segments-touch noselect"></div>
+                </div>
+                <div class="trackbar__value">0%</div>
+            </div>
+        </div>
+
+        <!--
+        <div class="checkbox-group">
+            <div class="checkbox-wrapper">
+                <input type="checkbox" id="checkbox-reverse" class="control-panel__checkbox" />
+                <label id="label-reverse" for="checkbox-reverse" class="control-panel__label noselect">Reverse</label>
+            </div>
+        </div>
+
+        <hr class="control-panel__separator" />
+
+        <div class="checkbox-group">
+            <div class="checkbox-wrapper">
+                <input type="checkbox" id="checkbox-show-circle" class="control-panel__checkbox" />
+                <label id="label-show-circle" for="checkbox-show-circle" class="control-panel__label noselect">Show circle</label>
+            </div>
+
+            <div class="checkbox-wrapper">
+                <input type="checkbox" id="checkbox-show-rays" class="control-panel__checkbox" />
+                <label id="label-show-rays" for="checkbox-show-rays" class="control-panel__label noselect">Show rays</label>
+            </div>
+
+            <div class="checkbox-wrapper">
+                <input type="checkbox" id="checkbox-enable-colors" class="control-panel__checkbox" />
+                <label id="label-enable-colors" for="checkbox-enable-colors" class="control-panel__label noselect">Enable colors</label>
+            </div>
+        </div>
+        -->
+
+        <button class="button-tooltip">
+            <span>?</span>
+        </botton>
+    </section>
+
     <script type="text/javascript" src="lib/jquery-1.12.1.min.js"></script>
     <script type="text/javascript" src="js/base-canvas.js"></script>
+    <script type="text/javascript" src="js/base-control-panel.js"></script>
     <script type="text/javascript" src="js/life.js"></script>
+    <script type="text/javascript" src="js/components.js"></script>
+    <script type="text/javascript" src="js/life-control-panel.js"></script>
 </body>
 
 </html>

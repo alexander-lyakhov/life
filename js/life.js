@@ -8,7 +8,7 @@ window.app = window.app || {};
     app.Life = function Life($element)
     {
         if (!(this instanceof Life)) {
-            return new Wheel($element);
+            return new Life($element);
         }
 
         app.BaseCanvas.apply(this, arguments);
@@ -16,31 +16,13 @@ window.app = window.app || {};
         var virtualCtx = this.virtualCtx;
         var visibleCtx = this.visibleCtx;
 
+        var delay = 0;
+        var timeout = null;
+
         var cells = {
             cols: $element.width() / 10,
             rows: $element.width() / 10,
             data: []
-        };
-
-        //==================================================================================
-        //
-        //==================================================================================
-        this.bindEvents = function bindEvents()
-        {
-            var _this = this;
-
-            this.$element
-                .on('mousedown', $.proxy(this.pass, this))
-                .on('renderComplete', function()
-                {
-                    setTimeout(function() {
-                        _this.pass();
-                    }, 200);
-                });
-
-            //this.$body.on('keydown', $.proxy(this.pass, this));
-
-            return this;
         };
 
         //==================================================================================
@@ -80,6 +62,52 @@ window.app = window.app || {};
             }
 
             return this.bindEvents().draw();
+        };
+
+        //==================================================================================
+        //
+        //==================================================================================
+        this.bindEvents = function bindEvents()
+        {
+            var _this = this;
+
+            this.$element
+                .on('mousedown', $.proxy(this.pass, this))
+                .on('renderComplete', $.proxy(_this.wait, _this));
+
+            //this.$body.on('keydown', $.proxy(this.pass, this));
+
+            return this;
+        };
+
+        //==================================================================================
+        //
+        //==================================================================================
+        this.setSpeed = function setSpeed(val)
+        {
+            val = val || 0;
+            delay = (100 - val) * 10;
+
+            clearTimeout(timeout);
+
+            return this.wait();
+        };
+
+        //==================================================================================
+        //
+        //==================================================================================
+        this.wait = function wait()
+        {
+            var _this = this;
+
+            if (delay < 1000)
+            {
+                timeout = setTimeout(function() {
+                    _this.pass();
+                }, delay);
+            }
+
+            return this;
         };
 
         //==================================================================================
@@ -160,12 +188,13 @@ window.app = window.app || {};
 
             return this.render();
         };
-    }
+    };
 
     app.Life.prototype = Object.create(app.BaseCanvas.prototype);
     app.Life.prototype.constructor = app.BaseCanvas;
 
+    /*
     var life = new app.Life($('canvas'), 600, 600);
         life.init();
-
+    */
 })(window.app, jQuery);
