@@ -12,7 +12,7 @@
 
     <section class="control-panel life-control-panel">
 
-        <div class="control-panel__shell">
+        <div class="control-panel__group">
             <div id="trackbar-speed" class="trackbar noselect">
 
                 <label class="trackbar__caption">Speed</label>
@@ -25,7 +25,10 @@
             </div>
         </div>
 
-        <div class="control-panel__shell">
+        <!--
+        <hr class="control-panel__separator" />
+
+        <div class="control-panel__group">
             <div id="trackbar-density" class="trackbar noselect">
 
                 <label class="trackbar__caption">Density</label>
@@ -36,6 +39,16 @@
                 </div>
                 <div class="trackbar__value">0%</div>
             </div>
+        </div>
+        -->
+
+        <div class="control-panel__group">
+            <button class="control-panel__button control-panel__button-play noselect" data-state="0" data-play-symbol="&#9658;" data-pause-symbol="&#10074;&#10074;">&#9658;</button>
+        </div>
+        <div class="control-panel__group">
+            <button class="control-panel__button control-panel__button-clear noselect">Clear</button>
+            <button class="control-panel__button control-panel__button-reset noselect">Reset</button>
+            <button class="control-panel__button control-panel__button-edit noselect" data-state="0" data-editmode-off="Edit" data-editmode-on="Done">Edit</button>
         </div>
 
         <!--

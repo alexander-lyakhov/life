@@ -16,7 +16,18 @@ window.app = window.app || {};
         var virtualCtx = this.virtualCtx;
         var visibleCtx = this.visibleCtx;
 
-        var delay = 0;
+        var MODE = {
+            PAUSE: 0,
+            PLAY:  1,
+            EDIT:  2
+        };
+
+        var mode = MODE.PAUSE;
+
+        var speed = 85;
+        var density = 2;
+
+        var delay = (100 - speed) * 10;
         var timeout = null;
 
         var cells = {
@@ -41,7 +52,7 @@ window.app = window.app || {};
                 for (var y = 0; y < cells.rows; y++)
                 {
                     var cell = {
-                        isAlive:     Math.random() * 10 > 8,
+                        isAlive:     Math.random() * 10 < density,
                         readyToBorn: 0,
                         readyToDie:  0,
                         nextCell: null,
@@ -67,6 +78,27 @@ window.app = window.app || {};
         //==================================================================================
         //
         //==================================================================================
+        this.reset = function reset(val)
+        {
+            console.log(typeof(val));
+
+            if (typeof(val) === 'undefined') {
+                val = density;
+            }
+
+            for (var cell = cells.data[0][0]; cell.nextCell; cell = cell.nextCell)
+            {
+                cell.isAlive = Math.random() * 10 < val;
+                cell.readyToBorn = 0;
+                cell.readyToDie = 0;
+            }
+
+            return this.draw();
+        };
+
+        //==================================================================================
+        //
+        //==================================================================================
         this.bindEvents = function bindEvents()
         {
             var _this = this;
@@ -83,14 +115,46 @@ window.app = window.app || {};
         //==================================================================================
         //
         //==================================================================================
+        this.subscribe = function subscribe(eventName, fn)
+        {
+            $element.on(eventName, fn || $.noop);
+            return this;
+        };
+
+        //==================================================================================
+        //
+        //==================================================================================
         this.setSpeed = function setSpeed(val)
         {
-            val = val || 0;
-            delay = (100 - val) * 10;
+            speed = val || 0;
+            delay = (100 - speed) * 10;
 
             clearTimeout(timeout);
 
-            return this.wait();
+            if (speed) {
+                return this.wait();
+            }
+
+            return this;
+        };
+
+        this.getSpeed = function getSpeed() {
+            return speed;
+        };
+
+        //==================================================================================
+        //
+        //==================================================================================
+        this.run = function run()
+        {
+            mode = MODE.PLAY;
+            return this.draw();
+        };
+
+        this.pause = function pause()
+        {
+            mode = MODE.PAUSE;
+            return this;
         };
 
         //==================================================================================
@@ -100,7 +164,7 @@ window.app = window.app || {};
         {
             var _this = this;
 
-            if (delay < 1000)
+            if (mode === MODE.PLAY)
             {
                 timeout = setTimeout(function() {
                     _this.pass();
@@ -115,10 +179,15 @@ window.app = window.app || {};
         //==================================================================================
         this.pass = function pass()
         {
+            clearTimeout(timeout);
+
             for (var cell = cells.data[0][0]; cell.nextCell; cell = cell.nextCell)
             {
                 var count = 0;
 
+                /*
+                 *  3 x 3
+                 */
                 for (var x = cell.x - 1; x <= cell.x + 1; x++)
                 {
                     for (var y = cell.y - 1; y <= cell.y + 1; y++)
