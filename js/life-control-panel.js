@@ -13,7 +13,7 @@
         var BUTTON_STATE = {
             PAUSE: '1111',
             PLAY:  '1000',
-            EDIT:  '0001'
+            EDIT:  '0100'
         };
 
         var life = new app.Life($('canvas'), 600, 600).init();
@@ -85,11 +85,15 @@
                 {
                     $(this).text($(this).data('editmode-on'));
                     _this.updateButtonState(BUTTON_STATE.EDIT);
+
+                    life.startEdit();
                 }
                 else
                 {
                     $(this).text($(this).data('editmode-off'));
                     _this.updateButtonState(BUTTON_STATE.PAUSE);
+
+                    life.stopEdit();
                 }
             });
 

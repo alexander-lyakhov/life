@@ -16,6 +16,9 @@ window.app = window.app || {};
         var virtualCtx = this.virtualCtx;
         var visibleCtx = this.visibleCtx;
 
+        var $life = $element.parent();
+        var $modeLabel = $life.find('.life-mode');
+
         var MODE = {
             PAUSE: 0,
             PLAY:  1,
@@ -36,6 +39,11 @@ window.app = window.app || {};
             data: []
         };
 
+        var fn = {
+            pass: $.noop,
+            edit: $.noop
+        };
+
         //==================================================================================
         //
         //==================================================================================
@@ -52,7 +60,7 @@ window.app = window.app || {};
                 for (var y = 0; y < cells.rows; y++)
                 {
                     var cell = {
-                        isAlive:     Math.random() * 10 < density,
+                        isAlive:     Math.random() * 10 < density ? 1:0,
                         readyToBorn: 0,
                         readyToDie:  0,
                         nextCell: null,
@@ -88,7 +96,7 @@ window.app = window.app || {};
 
             for (var cell = cells.data[0][0]; cell.nextCell; cell = cell.nextCell)
             {
-                cell.isAlive = Math.random() * 10 < val;
+                cell.isAlive = Math.random() * 10 < val ? 1:0;
                 cell.readyToBorn = 0;
                 cell.readyToDie = 0;
             }
@@ -101,11 +109,12 @@ window.app = window.app || {};
         //==================================================================================
         this.bindEvents = function bindEvents()
         {
-            var _this = this;
+            fn.pass = $.proxy(this.pass, this);
+            fn.edit = $.proxy(this.edit, this);
 
             this.$element
-                .on('mousedown', $.proxy(this.pass, this))
-                .on('renderComplete', $.proxy(_this.wait, _this));
+                .on('mousedown', fn.pass)
+                .on('renderComplete', $.proxy(this.wait, this));
 
             //this.$body.on('keydown', $.proxy(this.pass, this));
 
@@ -148,12 +157,53 @@ window.app = window.app || {};
         this.run = function run()
         {
             mode = MODE.PLAY;
+            $modeLabel.text('Play');
+
             return this.draw();
         };
 
         this.pause = function pause()
         {
             mode = MODE.PAUSE;
+            $modeLabel.text('Pause');
+
+            return this;
+        };
+
+        //==================================================================================
+        //
+        //==================================================================================
+        this.startEdit = function startEdit()
+        {
+            this.$element.off('mousedown', fn.pass);
+            this.$element .on('mousedown', fn.edit);
+
+            mode = MODE.EDIT;
+            $modeLabel.text('Edit');
+
+            return this;
+        };
+
+        this.edit = function edit(e)
+        {
+            var x = Math.floor(e.offsetX / 10);
+            var y = Math.floor(e.offsetY / 10);
+
+            console.log(x, y, cells.data[x][y].isAlive);
+
+            cells.data[x][y].isAlive ^= 1;
+
+            return this.draw();
+        };
+
+        this.stopEdit = function stopEdit()
+        {
+            this.$element.off('mousedown', fn.edit);
+            this.$element .on('mousedown', fn.pass);
+
+            mode = MODE.PAUSE;
+            $modeLabel.text('Pause');
+
             return this;
         };
 
@@ -242,7 +292,7 @@ window.app = window.app || {};
                 if (cell.readyToDie)
                 {
                     cell.isAlive = 0;
-                    cell.readyToDie =   0;
+                    cell.readyToDie = 0;
                 }
 
                 if (cell.isAlive)

@@ -8,7 +8,10 @@
 </head>
 
 <body>
-    <canvas width="600" height="600" class="screen-center"></canvas>
+    <div class="life screen-center">
+        <canvas width="600" height="600"></canvas>
+        <label class="life-mode noselect">Pause</label>
+    </div>
 
     <section class="control-panel life-control-panel">
 
@@ -46,9 +49,9 @@
             <button class="control-panel__button control-panel__button-play noselect" data-state="0" data-play-symbol="&#9658;" data-pause-symbol="&#10074;&#10074;">&#9658;</button>
         </div>
         <div class="control-panel__group">
+            <button class="control-panel__button control-panel__button-edit noselect" data-state="0" data-editmode-off="Edit" data-editmode-on="Done">Edit</button>
             <button class="control-panel__button control-panel__button-clear noselect">Clear</button>
             <button class="control-panel__button control-panel__button-reset noselect">Reset</button>
-            <button class="control-panel__button control-panel__button-edit noselect" data-state="0" data-editmode-off="Edit" data-editmode-on="Done">Edit</button>
         </div>
 
         <!--

@@ -40,9 +40,33 @@ a {
     color: #ccc;
 }
 
+.life {
+    /*background: #066;*/
+    border: 1px solid #960;
+    box-sizing: content-box;
+    width: 602px;
+    height: 602px;
+    margin: -301px 0 0 -401px;
+}
+
+.life-mode {
+    /*font: bold 13px verdana, terminal;*/
+    font: 18px terminal;
+    color: #c93;
+    text-align: right;
+    letter-spacing: 1px;
+    width: 100%;
+    height: 28px;
+    line-height: 28px;
+    display: block;
+    position: absolute;
+    top: -28px;
+}
+
 canvas {
     background: url(../img/bg-01.png);
-    margin: -300px 0 0 -300px;
+    /*margin: -300px 0 0 -300px;*/
+    margin: 1px 1px;
 }
 
 .page-list {
