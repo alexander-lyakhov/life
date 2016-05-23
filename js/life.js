@@ -49,8 +49,6 @@ window.app = window.app || {};
         //==================================================================================
         this.init = function init()
         {
-            console.log('init');
-
             var prevCell = null;
 
             for (var x = 0; x < cells.cols; x++)
@@ -88,8 +86,6 @@ window.app = window.app || {};
         //==================================================================================
         this.reset = function reset(val)
         {
-            console.log(typeof(val));
-
             if (typeof(val) === 'undefined') {
                 val = density;
             }
@@ -115,8 +111,6 @@ window.app = window.app || {};
             this.$element
                 .on('mousedown', fn.pass)
                 .on('renderComplete', $.proxy(this.wait, this));
-
-            //this.$body.on('keydown', $.proxy(this.pass, this));
 
             return this;
         };
@@ -159,6 +153,10 @@ window.app = window.app || {};
             mode = MODE.PLAY;
             $modeLabel.text('Play');
 
+            $life
+                .removeClass('pause')
+                .addClass('play');
+
             return this.draw();
         };
 
@@ -166,6 +164,10 @@ window.app = window.app || {};
         {
             mode = MODE.PAUSE;
             $modeLabel.text('Pause');
+
+            $life
+                .removeClass('play')
+                .addClass('pause');
 
             return this;
         };
@@ -178,6 +180,10 @@ window.app = window.app || {};
             this.$element.off('mousedown', fn.pass);
             this.$element .on('mousedown', fn.edit);
 
+            $life
+                .removeClass('pause')
+                .addClass('edit');
+
             mode = MODE.EDIT;
             $modeLabel.text('Edit');
 
@@ -189,8 +195,6 @@ window.app = window.app || {};
             var x = Math.floor(e.offsetX / 10);
             var y = Math.floor(e.offsetY / 10);
 
-            console.log(x, y, cells.data[x][y].isAlive);
-
             cells.data[x][y].isAlive ^= 1;
 
             return this.draw();
@@ -200,6 +204,10 @@ window.app = window.app || {};
         {
             this.$element.off('mousedown', fn.edit);
             this.$element .on('mousedown', fn.pass);
+
+            $life
+                .removeClass('edit')
+                .addClass('pause');
 
             mode = MODE.PAUSE;
             $modeLabel.text('Pause');
@@ -312,8 +320,4 @@ window.app = window.app || {};
     app.Life.prototype = Object.create(app.BaseCanvas.prototype);
     app.Life.prototype.constructor = app.BaseCanvas;
 
-    /*
-    var life = new app.Life($('canvas'), 600, 600);
-        life.init();
-    */
 })(window.app, jQuery);

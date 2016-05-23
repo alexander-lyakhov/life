@@ -41,7 +41,6 @@ a {
 }
 
 .life {
-    /*background: #066;*/
     border: 1px solid #960;
     box-sizing: content-box;
     width: 602px;
@@ -50,7 +49,6 @@ a {
 }
 
 .life-mode {
-    /*font: bold 13px verdana, terminal;*/
     font: 18px terminal;
     color: #c93;
     text-align: right;
@@ -63,39 +61,32 @@ a {
     top: -28px;
 }
 
+.life.play .life-mode:before {
+    font: 18px terminal, arial;
+    color: #096;
+    content: '\25BA \20';
+    position: absolute;
+    right: 58px;
+    top: 2px;
+}
+
+.life.pause .life-mode:before {
+    font: 18px terminal;
+    color: #c60;
+    content: '\275A \275A \20';
+    position: absolute;
+    right: 58px;
+    top: 1px;
+}
+
+.life.edit {
+    border-color: #ec0;
+    cursor: url(../img/cursor-cross.gif) 7 7, auto;
+}
+
 canvas {
     background: url(../img/bg-01.png);
-    /*margin: -300px 0 0 -300px;*/
     margin: 1px 1px;
-}
-
-.page-list {
-    text-align: center;
-    width: 100%;
-    height: 320px;
-    position: absolute;
-    top: 50%;
-    margin: -160px 0 0 0;
-}
-
-.page-list__item {
-    background: #000;
-    box-sizing: border-box;
-    width: 256px;
-    height: 256px;
-    display: inline-block;
-    margin: 32px 32px;
-}
-
-.page-list__item a {
-    border: 2px solid #666;
-    width: 100%;
-    height: 100%;
-    float: left;
-}
-
-.page-list__item a:hover {
-    border: 2px solid #999;
 }
 
 .screen-center {
@@ -104,6 +95,38 @@ canvas {
     top: 50%;
 }
 
+/*
+ *  Copyright
+ */
+
+.copyright {
+    font: 13px verdana;
+    color: #999;
+    text-align: center;
+    width: 100%;
+    height: 24px;
+    line-height: 24px;
+    margin-right: 200px;
+    position: absolute;
+    bottom: 0;
+}
+
+.copyright span {
+    background: #000;
+    margin: 0 0 0 -200px;
+}
+
+.copyright__link {
+    /*
+    font-weight: bold;
+    color: #999;
+    */
+    color: #999;
+}
+
+.copyright__link:hover {
+    color: #c93;
+}
 
 /*
  * Control Panel styles
@@ -111,7 +134,6 @@ canvas {
 .control-panel {
     background: #333;
     border: 1px solid #666;
-    /*text-align: center;*/
     width: 200px;
     height: 100%;
     position: fixed;

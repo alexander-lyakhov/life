@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <div class="life screen-center">
+    <div class="life pause screen-center">
         <canvas width="600" height="600"></canvas>
         <label class="life-mode noselect">Pause</label>
     </div>
@@ -28,64 +28,19 @@
             </div>
         </div>
 
-        <!--
-        <hr class="control-panel__separator" />
-
-        <div class="control-panel__group">
-            <div id="trackbar-density" class="trackbar noselect">
-
-                <label class="trackbar__caption">Density</label>
-
-                <div class="trackbar__shell empty">
-                    <div class="trackbar__segments-wrapper"></div>
-                    <div class="trackbar__segments-touch noselect"></div>
-                </div>
-                <div class="trackbar__value">0%</div>
-            </div>
-        </div>
-        -->
-
         <div class="control-panel__group">
             <button class="control-panel__button control-panel__button-play noselect" data-state="0" data-play-symbol="&#9658;" data-pause-symbol="&#10074;&#10074;">&#9658;</button>
         </div>
+
         <div class="control-panel__group">
             <button class="control-panel__button control-panel__button-edit noselect" data-state="0" data-editmode-off="Edit" data-editmode-on="Done">Edit</button>
             <button class="control-panel__button control-panel__button-clear noselect">Clear</button>
             <button class="control-panel__button control-panel__button-reset noselect">Reset</button>
         </div>
 
-        <!--
-        <div class="checkbox-group">
-            <div class="checkbox-wrapper">
-                <input type="checkbox" id="checkbox-reverse" class="control-panel__checkbox" />
-                <label id="label-reverse" for="checkbox-reverse" class="control-panel__label noselect">Reverse</label>
-            </div>
-        </div>
-
-        <hr class="control-panel__separator" />
-
-        <div class="checkbox-group">
-            <div class="checkbox-wrapper">
-                <input type="checkbox" id="checkbox-show-circle" class="control-panel__checkbox" />
-                <label id="label-show-circle" for="checkbox-show-circle" class="control-panel__label noselect">Show circle</label>
-            </div>
-
-            <div class="checkbox-wrapper">
-                <input type="checkbox" id="checkbox-show-rays" class="control-panel__checkbox" />
-                <label id="label-show-rays" for="checkbox-show-rays" class="control-panel__label noselect">Show rays</label>
-            </div>
-
-            <div class="checkbox-wrapper">
-                <input type="checkbox" id="checkbox-enable-colors" class="control-panel__checkbox" />
-                <label id="label-enable-colors" for="checkbox-enable-colors" class="control-panel__label noselect">Enable colors</label>
-            </div>
-        </div>
-        -->
-
-        <button class="button-tooltip">
-            <span>?</span>
-        </botton>
     </section>
+
+    <div class="copyright noselect"><span>Author: <a class="copyright__link" href="https://www.linkedin.com/in/alexander-lyakhov-8207491a?trk=nav_responsive_tab_profile" target="_blank">Alexander Lyakhov</a>, 2016</span></div>
 
     <script type="text/javascript" src="lib/jquery-1.12.1.min.js"></script>
     <script type="text/javascript" src="js/base-canvas.js"></script>

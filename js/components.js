@@ -139,7 +139,4 @@
         };
     };
 
-    var trackbar01 = new app.Trackbar($('#tb01')).init();
-    var trackbar02 = new app.Trackbar($('#tb02')).init();
-
 })(window.app, jQuery);
