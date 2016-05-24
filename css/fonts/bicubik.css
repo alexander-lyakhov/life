@@ -1,0 +1,10 @@
+
+@font-face {
+    font-family: 'bicubik';
+    src: url('bicubik_central_europe.eot');
+    src: url('bicubik_central_europe.eot?#iefix') format('embedded-opentype'),
+         url('bicubik_central_europe.woff') format('woff'),
+         url('bicubik_central_europe.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

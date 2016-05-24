@@ -1,3 +1,5 @@
+@import "fonts/bicubik.css";
+
 html, body {
     height: 100%;
 }
@@ -49,7 +51,8 @@ a {
 }
 
 .life-mode {
-    font: 18px terminal;
+    /*font: 14px 'furoreregular';*/
+    font: 13px 'bicubik';
     color: #c93;
     text-align: right;
     letter-spacing: 1px;
@@ -62,21 +65,21 @@ a {
 }
 
 .life.play .life-mode:before {
-    font: 18px terminal, arial;
+    font: 13px 'bicubik';
     color: #096;
     content: '\25BA \20';
     position: absolute;
     right: 58px;
-    top: 2px;
+    top: 5px;
 }
 
 .life.pause .life-mode:before {
-    font: 18px terminal;
+    font: 13px 'bicubik';
     color: #c60;
     content: '\275A \275A \20';
     position: absolute;
     right: 58px;
-    top: 1px;
+    top: 4px;
 }
 
 .life.edit {
@@ -147,10 +150,11 @@ canvas {
 }
 
 .control-panel__button {
-    font: 18px terminal, arial;
+    font: 12px 'bicubik';
     color: #0cc;
     background: #055;
     border: 1px solid #099;
+    letter-spacing: 1px;
     width: 100%;
     height: 32px;
     margin: 4px 0;
@@ -336,7 +340,8 @@ label {
  */
 
 .trackbar {
-    font: 18px terminal;
+    font: 14px 'bicubik';
+    letter-spacing: 1px;
     color: #0cc;
     width: 188px;
     /*height: 32px;*/
