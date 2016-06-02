@@ -17,7 +17,8 @@ window.app = window.app || {};
         var visibleCtx = this.visibleCtx;
 
         var $life = $element.parent();
-        var $modeLabel = $life.find('.life-mode');
+        var $labelMode = $life.find('.life-mode');
+        var $labelIterations = $life.find('.life-itarations span');
 
         var MODE = {
             PAUSE: 0,
@@ -29,6 +30,8 @@ window.app = window.app || {};
 
         var speed = 85;
         var density = 2;
+
+        var iterations = 0;
 
         var delay = (100 - speed) * 10;
         var timeout = null;
@@ -97,6 +100,8 @@ window.app = window.app || {};
                 cell.readyToDie = 0;
             }
 
+            iterations = 0;
+
             return this.draw();
         };
 
@@ -151,7 +156,7 @@ window.app = window.app || {};
         this.run = function run()
         {
             mode = MODE.PLAY;
-            $modeLabel.text('Play');
+            $labelMode.text('Play');
 
             $life
                 .removeClass('pause')
@@ -163,7 +168,7 @@ window.app = window.app || {};
         this.pause = function pause()
         {
             mode = MODE.PAUSE;
-            $modeLabel.text('Pause');
+            $labelMode.text('Pause');
 
             $life
                 .removeClass('play')
@@ -177,15 +182,15 @@ window.app = window.app || {};
         //==================================================================================
         this.startEdit = function startEdit()
         {
+            mode = MODE.EDIT;
+            $labelMode.text('Edit');
+
             this.$element.off('mousedown', fn.pass);
             this.$element .on('mousedown', fn.edit);
 
             $life
                 .removeClass('pause')
                 .addClass('edit');
-
-            mode = MODE.EDIT;
-            $modeLabel.text('Edit');
 
             return this;
         };
@@ -202,15 +207,15 @@ window.app = window.app || {};
 
         this.stopEdit = function stopEdit()
         {
+            mode = MODE.PAUSE;
+            $labelMode.text('Pause');
+
             this.$element.off('mousedown', fn.edit);
             this.$element .on('mousedown', fn.pass);
 
             $life
                 .removeClass('edit')
                 .addClass('pause');
-
-            mode = MODE.PAUSE;
-            $modeLabel.text('Pause');
 
             return this;
         };
@@ -279,6 +284,8 @@ window.app = window.app || {};
                 }
             }
 
+            iterations++;
+
             return this.draw();
         };
 
@@ -312,6 +319,8 @@ window.app = window.app || {};
                     ctx.fillRect(xPos, yPos, 8, 8);
                 }
             }
+
+            $labelIterations.text(iterations);
 
             return this.render();
         };

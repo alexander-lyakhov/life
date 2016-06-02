@@ -50,27 +50,44 @@ a {
     margin: -301px 0 0 -401px;
 }
 
+.life-itarations {
+    font: 13px 'bicubik';
+    color: #c93;
+    /*background: #066;*/
+    text-align: right;
+    letter-spacing: 1px;
+    height: 28px;
+    line-height: 28px;
+    position: absolute;
+    top: -28px;
+    left: 0;
+}
+
+.life-itarations span {
+    color: #ccc;
+}
+
 .life-mode {
     /*font: 14px 'furoreregular';*/
     font: 13px 'bicubik';
     color: #c93;
     text-align: right;
     letter-spacing: 1px;
-    width: 100%;
     height: 28px;
     line-height: 28px;
     display: block;
     position: absolute;
     top: -28px;
+    right: 0;
 }
 
 .life.play .life-mode:before {
-    font: 13px 'bicubik';
+    font: 13px arial, 'bicubik';
     color: #096;
     content: '\25BA \20';
     position: absolute;
     right: 58px;
-    top: 5px;
+    top: 4px;
 }
 
 .life.pause .life-mode:before {
