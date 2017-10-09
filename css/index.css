@@ -45,7 +45,7 @@ a {
 .life {
     border: 1px solid #960;
     box-sizing: content-box;
-    width: 602px;
+    width: 802px;
     height: 602px;
     margin: -301px 0 0 -401px;
 }
@@ -153,13 +153,15 @@ canvas {
  */
 .control-panel {
     background: #333;
-    border: 1px solid #666;
+    /*border: 1px solid #666;*/
+    box-sizing: border-box;
     width: 200px;
     height: 100%;
-    position: fixed;
+    /*position: fixed;
     right: 0;
     top: 0;
-    padding: 8px 0 0 0;
+    padding: 8px 0 0 0;*/
+    float: right;
 }
 
 .control-panel__group {
