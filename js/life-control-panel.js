@@ -53,14 +53,14 @@
 
                 if (state)
                 {
-                    $(this).text($(this).data('pause-symbol'));
+                    $(this).text($(this).data('pause-text'));
                     life.run();
 
                     _this.updateButtonState(BUTTON_STATE.PLAY);
                 }
                 else
                 {
-                    $(this).text($(this).data('play-symbol'));
+                    $(this).text($(this).data('play-text'));
                     life.pause();
 
                     _this.updateButtonState(BUTTON_STATE.PAUSE);
